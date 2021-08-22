@@ -3,12 +3,13 @@ import { useState } from 'react';
 import { Todos } from '../Todos/Todos';
 import { Modal } from '../UI/Modal/ModalWindow';
 import { TodoForm } from '../TodoForm/TodoForm';
-import { SearchedTodo } from '../SearchedTodo.js/SearchedTodo';
 
-const TodoListView = ({ completeTodoHandler, deleteTodoHandler, isLoading, ...rest }) => {
+const TodoListView = ({ completeTodoHandler, deleteTodoHandler, isLoading,  ...rest }) => {
     const [formStatus, setFormStatus] = useState(false);
     const closeModalWindowBtn = () => setFormStatus(false);
     const showDeletedTag = () => setFormStatus(true);
+
+    // console.log(todoList)
 
     const formPropsData = {
         isLoading,
@@ -25,7 +26,6 @@ const TodoListView = ({ completeTodoHandler, deleteTodoHandler, isLoading, ...re
     return (
         <div>
             <h2>Hey, what's your main focus for today? </h2>
-            <SearchedTodo />
             <TodoForm {...formPropsData} />
             {isLoading && <span>Loading ...</span>}
             {!isLoading && <Todos {...todoListData} />}
