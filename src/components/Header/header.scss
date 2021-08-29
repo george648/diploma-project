@@ -1,15 +1,17 @@
 header {
-    width: 100%;
-    height: 100px;
-    background-color: rgb(156, 124, 124);
+  width: 100%;
+  height: 100px;
+  background-color: rgb(156, 124, 124);
 
-    .allTodos, .completedTodos, .uncompletedTodos {
-        text-decoration: none;
-        margin-right: 30px;
+  .allTodos,
+  .completedTodos,
+  .uncompletedTodos {
+    text-decoration: none;
+    margin-right: 30px;
 
-        &.active {
-            color: white;
-            text-decoration: underline;
-        }
+    &.active {
+      color: white;
+      text-decoration: underline;
     }
+  }
 }
