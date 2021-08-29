@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Todos } from '../Todos/Todos';
 import { Modal } from '../UI/Modal/ModalWindow';
 import { TodoForm } from '../TodoForm/TodoForm';
+import { todosListPropType } from '../propTypes/propTypes';
 
 const TodoListView = ({
   completeTodoHandler,
@@ -45,23 +46,12 @@ TodoListView.propTypes = {
   completeTodoHandler: PropTypes.func.isRequired,
   deleteTodoHandler: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-//   rest: PropTypes.shape({
-//     handleFormSubmit: PropTypes.func.isRequired,
-//     error: PropTypes.string.isRequired,
-//     onChange: PropTypes.func.isRequired,
-//     todoList: PropTypes.arrayOf(
-//       PropTypes.shape({
-//         completed: PropTypes.bool.isRequired,
-//         _id: PropTypes.string.isRequired,
-//         createdAt: PropTypes.string.isRequired,
-//         name: PropTypes.string.isRequired,
-//         description: PropTypes.string.isRequired,
-//         owner: PropTypes.string.isRequired,
-//         updatedAt: PropTypes.string.isRequired,
-//         __v: PropTypes.number.isRequired,
-//       }),
-//     ).isRequired,
-//   }).isRequired,
+  rest: PropTypes.shape({
+    handleFormSubmit: PropTypes.func.isRequired,
+    error: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    todoList: todosListPropType.isRequired,
+  }).isRequired,
 };
 
 export default TodoListView;
