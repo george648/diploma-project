@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Todos } from '../Todos/Todos';
 import { Modal } from '../UI/Modal/ModalWindow';
 import { TodoForm } from '../TodoForm/TodoForm';
-import { todosListPropType } from '../propTypes/propTypes';
+import { todoListPropType } from '../propTypes/propTypes';
 
 const TodoListView = ({
   completeTodoHandler,
@@ -50,7 +50,7 @@ TodoListView.propTypes = {
     handleFormSubmit: PropTypes.func.isRequired,
     error: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    todoList: todosListPropType.isRequired,
+    todoList: todoListPropType.isRequired,
   }).isRequired,
 };
 

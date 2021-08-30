@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TodoListView from './TodoListView';
-import { todosListPropType } from '../propTypes/propTypes';
+import { todoListPropType } from '../propTypes/propTypes';
 import {
   postTodoList,
   getTodoList,
@@ -23,8 +23,6 @@ const TodoListContainer = ({
     name: '',
     description: '',
   });
-
-  console.log(todoList)
 
   useEffect(() => {
     getTodos();
@@ -73,7 +71,7 @@ TodoListContainer.propTypes = {
   completeTodoHandler: PropTypes.func.isRequired,
   deleteTodoHandler: PropTypes.func.isRequired,
   getTodos: PropTypes.func.isRequired,
-  todoList: PropTypes.arrayOf(todosListPropType).isRequired,
+  todoList: PropTypes.arrayOf(todoListPropType).isRequired,
   error: PropTypes.string.isRequired,
   postTodo: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,

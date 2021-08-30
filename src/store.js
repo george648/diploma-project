@@ -1,7 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { token } from './constants/token';
-import { API_URL } from './constants/Api';
 
 const initialState = {
   user: {},
@@ -119,10 +117,10 @@ export const completeTodoSuccess = (todoItem) => ({
 });
 
 export const postTodoList = (body) => (dispatch) =>
-  fetch(`${API_URL}/tasks`, {
+  fetch(`${process.env.REACT_APP_API_URL}/tasks`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
       'Content-type': 'application/json; charset=utf-8',
     },
     body: JSON.stringify(body),
@@ -139,10 +137,10 @@ export const postTodoList = (body) => (dispatch) =>
     .catch((error) => dispatch(postTodoError(error)));
 
 export const getTodoList = () => (dispatch) =>
-  fetch(`${API_URL}/tasks`, {
+  fetch(`${process.env.REACT_APP_API_URL}/tasks`, {
     method: 'GET',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     },
   })
     .then(dispatch(setLoading()))
@@ -155,10 +153,10 @@ export const getTodoList = () => (dispatch) =>
     });
 
 export const deleteTodo = (id) => (dispatch) =>
-  fetch(`${API_URL}/tasks/${id}`, {
+  fetch(`${process.env.REACT_APP_API_URL}/tasks/${id}`, {
     method: 'DELETE',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
     },
   })
     .then((response) => response.json())
@@ -166,10 +164,10 @@ export const deleteTodo = (id) => (dispatch) =>
     .catch((error) => dispatch(deleteTodoError(error)));
 
 export const completeTodo = (id, completed) => (dispatch) =>
-  fetch(`${API_URL}/tasks/${id}`, {
+  fetch(`${process.env.REACT_APP_API_URL}/tasks/${id}`, {
     method: 'PATCH',
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify({ completed }),

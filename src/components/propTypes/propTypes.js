@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export const todosListPropType = PropTypes.shape({
+export const todoListPropType = PropTypes.shape({
     completed: PropTypes.bool.isRequired,
     _id: PropTypes.string.isRequired,
     createdAt: PropTypes.string.isRequired,

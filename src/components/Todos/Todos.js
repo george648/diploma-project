@@ -59,7 +59,7 @@ export const Todos = ({
           </li>
         ))
       ) : (
-        <div>there no one todo </div>
+        <div>there are no todos </div>
       )}
     </ol>
   );

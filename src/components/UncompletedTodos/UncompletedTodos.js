@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 export const UncompletedTodos = () => {
   const todos = useSelector((state) => state.todoList);
-  const unCompletedTodos = todos.filter(({ completed }) => !completed);
+  const uncompletedTodos = todos.filter(({ completed }) => !completed);
 
-  return <div>UncompletedTodos: {unCompletedTodos.length}</div>;
+  return <div>UncompletedTodos: {uncompletedTodos.length}</div>;
 };

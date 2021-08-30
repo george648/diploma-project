@@ -8,7 +8,7 @@ const ModalComponent = ({ children, closeModalWindowBtn }) => {
     if (event.code === 'Enter' || event.code === 'Escape') {
       closeModalWindowBtn();
     }
-  });
+  }, []);
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDownHandler);
