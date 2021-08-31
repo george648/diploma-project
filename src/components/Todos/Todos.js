@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { StyledTodos } from './StyledTodo';
-import { StyledDeleteButton } from './StyledDeleteButton';
+import { useCallback } from 'react';
+import { Todo } from './Todo/Todo';
 
 export const Todos = ({
   completeTodoHandler,
@@ -8,55 +8,21 @@ export const Todos = ({
   deleteTodoHandler,
   showDeletedTag,
 }) => {
-  const buttonDeleteHandler = ({
-    target: {
-      dataset: { id },
-    },
-  }) => {
-    showDeletedTag();
-    deleteTodoHandler(id);
-  };
 
-  const passEventToCompleteHandler = ({
-    target: {
-      dataset: { id },
-      checked,
-    },
-  }) => {
-    completeTodoHandler(id, checked);
-  };
+  const buttonDeleteHandler = useCallback((id) => {
+    deleteTodoHandler(id);
+    showDeletedTag();
+  }, []);
+
+  const checkHandler = useCallback((id, completed) => {
+    completeTodoHandler(id, completed);
+  }, []);
 
   return (
     <ol>
       {todoList.length ? (
         todoList.map(({ name, description, _id, completed }) => (
-          <li key={_id}>
-            <StyledTodos>
-              <div>
-                <span>
-                  Name:<strong>{name}.</strong>
-                </span>
-                <span>
-                  {' '}
-                  Description: <strong>{description}.</strong>
-                </span>
-              </div>
-              <div>
-                <input
-                  checked={completed}
-                  data-id={_id}
-                  type="checkbox"
-                  onChange={passEventToCompleteHandler}
-                />
-                <StyledDeleteButton
-                  onClick={buttonDeleteHandler}
-                  data-id={_id}
-                >
-                  delete task
-                </StyledDeleteButton>
-              </div>
-            </StyledTodos>
-          </li>
+          <Todo key={_id} name={name} description={description} id={_id} completed={completed} buttonDeleteHandler={buttonDeleteHandler} checkHandler={checkHandler} />
         ))
       ) : (
         <div>there are no todos </div>

@@ -34,7 +34,7 @@ const TodoListContainer = ({
   const handleFormSubmit = (event) => {
     event.preventDefault();
     postTodo(formData);
-    setFormData(() => {});
+    setFormData(() => { });
   };
 
   const onChange = ({ target: { name, value } }) => {
