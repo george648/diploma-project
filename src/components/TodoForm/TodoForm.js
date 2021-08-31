@@ -8,7 +8,7 @@ export const TodoForm = ({ onChange, handleFormSubmit, isLoading, error }) => (
           onChange={onChange}
           className="todoInput"
           name="name"
-          placeholder="enter name of todo"
+          placeholder="enter nam0e of todo"
           type="text"
         />
         <input

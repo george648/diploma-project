@@ -24,6 +24,9 @@ const TodoListContainer = ({
     description: '',
   });
 
+  // const [todoName, setTodoName] = useState('');
+  // const [todoDescription, setTodoDescription] = useState('');
+
   useEffect(() => {
     getTodos();
   }, []);

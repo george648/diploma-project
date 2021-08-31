@@ -4,7 +4,7 @@ import './header.scss';
 export const Header = () => (
   <header>
     <h2>TodoList</h2>
-    <div>
+    <div className="headerWrapper">
       <NavLink className="allTodos" to="/all-todos">
         all Todos
       </NavLink>

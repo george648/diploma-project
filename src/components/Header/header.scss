@@ -3,15 +3,21 @@ header {
   height: 100px;
   background-color: rgb(156, 124, 124);
 
-  .allTodos,
-  .completedTodos,
-  .uncompletedTodos {
-    text-decoration: none;
-    margin-right: 30px;
+  .headerWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 
-    &.active {
-      color: white;
-      text-decoration: underline;
+    .allTodos,
+    .completedTodos,
+    .uncompletedTodos {
+      text-decoration: none;
+      margin-right: 30px;
+
+      &.active {
+        color: white;
+        text-decoration: underline;
+      }
     }
   }
 }
