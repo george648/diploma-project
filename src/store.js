@@ -46,8 +46,6 @@ const rootReducer = (state = initialState, action) => {
         todoList: initialState.todoList,
       };
     case 'HIDE_DELETED_TODO':
-      console.log(123)
-      
       return {
         ...state,
         isSuccessfullyDeleted: false,
@@ -69,7 +67,7 @@ const rootReducer = (state = initialState, action) => {
           if (todo._id === action.payload._id) {
             todo.completed = action.payload.completed;
           }
-          
+
           return todo;
         }),
       };
@@ -101,13 +99,9 @@ export const deleteTodoSuccess = (deletedTodo) => ({
   payload: deletedTodo,
 });
 
-export const hideDeletedTodo = () => {
-  console.log(123123123)
-
-  return {
+export const hideDeletedTodo = () => ({
   type: 'HIDE_DELETED_TODO',
-}
-}
+});
 
 export const deleteTodoError = (error) => ({
   type: 'DELETE_TODO_ERROR',
