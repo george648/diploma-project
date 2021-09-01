@@ -8,7 +8,13 @@ import {
   getTodoList,
   deleteTodo,
   completeTodo,
+  hideDeletedTodo,
 } from '../../store';
+
+const INITIAL_FORM_DATA = {
+  name: '',
+  description: '',
+};
 
 const TodoListContainer = ({
   completeTodoHandler,
@@ -18,11 +24,11 @@ const TodoListContainer = ({
   error,
   postTodo,
   isLoading,
+  deletedName,
+  isSuccessfullyDeleted,
+  hideDeletedTodoHandler,
 }) => {
-  const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-  });
+  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   useEffect(() => {
     getTodos();
@@ -31,15 +37,8 @@ const TodoListContainer = ({
   const handleFormSubmit = (event) => {
     event.preventDefault();
     postTodo(formData);
-    setFormData(() => { });
+    setFormData(() => (INITIAL_FORM_DATA));
   };
-
-  // const onChange = ({ target: { name, value } }) => {
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-  // };
 
   const onChangeName = ({ target: { name, value } }) => {
     setFormData({
@@ -48,7 +47,7 @@ const TodoListContainer = ({
     });
   };
 
-    const onChangeDescription = ({ target: { name, value } }) => {
+  const onChangeDescription = ({ target: { name, value } }) => {
     setFormData({
       ...formData,
       [name]: value,
@@ -60,23 +59,29 @@ const TodoListContainer = ({
     error,
     isLoading,
     handleFormSubmit,
-    // onChange,
     onChangeDescription,
     onChangeName,
     completeTodoHandler,
     deleteTodoHandler,
+    formData,
+    deletedName,
+    isSuccessfullyDeleted,
+    hideDeletedTodoHandler,
   };
 
   return <TodoListView {...propsData} />;
 };
 
-const mapStateToProps = ({ isLoading, error, todoList }) => ({
+const mapStateToProps = ({ isLoading, error, todoList, deletedTodo, isSuccessfullyDeleted }) => ({
+  isSuccessfullyDeleted,
+  deletedName: deletedTodo.name,
   todoList,
   isLoading,
   error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  hideDeletedTodoHandler: () => dispatch(hideDeletedTodo()),
   postTodo: (form) => dispatch(postTodoList(form)),
   getTodos: () => dispatch(getTodoList()),
   deleteTodoHandler: (id) => dispatch(deleteTodo(id)),
@@ -84,6 +89,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 TodoListContainer.propTypes = {
+  hideDeletedTodoHandler: PropTypes.func.isRequired,
+  deletedName: PropTypes.string.isRequired,
+  isSuccessfullyDeleted: PropTypes.bool.isRequired,
   completeTodoHandler: PropTypes.func.isRequired,
   deleteTodoHandler: PropTypes.func.isRequired,
   getTodos: PropTypes.func.isRequired,

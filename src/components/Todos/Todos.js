@@ -6,12 +6,10 @@ export const Todos = ({
   completeTodoHandler,
   todoList,
   deleteTodoHandler,
-  showDeletedTag,
 }) => {
 
   const buttonDeleteHandler = useCallback((id) => {
     deleteTodoHandler(id);
-    showDeletedTag();
   }, []);
 
   const checkHandler = useCallback((id, completed) => {
@@ -46,5 +44,4 @@ Todos.propTypes = {
     }),
   ).isRequired,
   deleteTodoHandler: PropTypes.func.isRequired,
-  showDeletedTag: PropTypes.func.isRequired,
 };

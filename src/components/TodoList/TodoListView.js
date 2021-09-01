@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import { Todos } from '../Todos/Todos';
 import { Modal } from '../UI/Modal/ModalWindow';
 import { TodoForm } from '../TodoForm/TodoForm';
@@ -9,20 +8,21 @@ const TodoListView = ({
   completeTodoHandler,
   deleteTodoHandler,
   isLoading,
+  formData,
+  deletedName,
+  isSuccessfullyDeleted,
+  hideDeletedTodoHandler,
   ...rest
 }) => {
-  const [formStatus, setFormStatus] = useState(false);
-  const closeModalWindowBtn = () => setFormStatus(false);
-  const showDeletedTag = () => setFormStatus(true);
   
   const formPropsData = {
     isLoading,
+    formData,
     ...rest,
   };
 
   const todoListData = {
     ...rest,
-    showDeletedTag,
     deleteTodoHandler,
     completeTodoHandler,
   };
@@ -33,9 +33,9 @@ const TodoListView = ({
       <TodoForm {...formPropsData} />
       {isLoading && <span>Loading ...</span>}
       {!isLoading && <Todos {...todoListData} />}
-      {formStatus && (
-        <Modal closeModalWindowBtn={closeModalWindowBtn}>
-          You have just deleted "todo"
+      {isSuccessfullyDeleted && (
+        <Modal closeModalWindowBtn={ hideDeletedTodoHandler}>
+          {`You have just deleted ${deletedName}`}
         </Modal>
       )}
     </div>
@@ -45,7 +45,14 @@ const TodoListView = ({
 TodoListView.propTypes = {
   completeTodoHandler: PropTypes.func.isRequired,
   deleteTodoHandler: PropTypes.func.isRequired,
+  hideDeletedTodoHandler: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  formData: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+  }).isRequired,
+  deletedName: PropTypes.string.isRequired,
+  isSuccessfullyDeleted: PropTypes.bool.isRequired,
   rest: PropTypes.shape({
     error: PropTypes.string.isRequired,
     handleFormSubmit: PropTypes.func.isRequired,

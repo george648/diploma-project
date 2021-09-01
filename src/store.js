@@ -5,6 +5,10 @@ const initialState = {
   user: {},
   isLoading: false,
   todoList: [],
+  deletedTodo: {
+    name: '',
+  },
+  isSuccessfullyDeleted: false,
   error: '',
 };
 
@@ -28,15 +32,26 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        todoList: state.todoList.filter(({ _id }) => _id !== action.payload),
+        deletedTodo: action.payload,
+        isSuccessfullyDeleted: true,
+        todoList: state.todoList.filter(({ _id }) => _id !== action.payload._id),
       };
     case 'DELETE_TODO_ERROR':
       return {
         ...state,
         isLoading: false,
         error: action.payload,
+        isSuccessfullyDeleted: false,
+        deletedTodo: initialState.deletedTodo,
         todoList: initialState.todoList,
       };
+    case 'HIDE_DELETED_TODO':
+      console.log(123)
+      
+      return {
+        ...state,
+        isSuccessfullyDeleted: false,
+      }
     case 'LOADING':
       return { ...state, isLoading: true };
     case 'GET_TODO_LIST_SUCCESS':
@@ -81,10 +96,18 @@ export const postTodoSuccess = (todo) => ({
   payload: todo,
 });
 
-export const deleteTodoSuccess = (todoId) => ({
+export const deleteTodoSuccess = (deletedTodo) => ({
   type: 'DELETE_TODO_SUCCESS',
-  payload: todoId,
+  payload: deletedTodo,
 });
+
+export const hideDeletedTodo = () => {
+  console.log(123123123)
+
+  return {
+  type: 'HIDE_DELETED_TODO',
+}
+}
 
 export const deleteTodoError = (error) => ({
   type: 'DELETE_TODO_ERROR',
@@ -160,7 +183,7 @@ export const deleteTodo = (id) => (dispatch) =>
     },
   })
     .then((response) => response.json())
-    .then(dispatch(deleteTodoSuccess(id)))
+    .then((data) => dispatch(deleteTodoSuccess(data)))
     .catch((error) => dispatch(deleteTodoError(error)));
 
 export const completeTodo = (id, completed) => (dispatch) =>
