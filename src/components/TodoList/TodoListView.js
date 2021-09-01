@@ -14,7 +14,7 @@ const TodoListView = ({
   const [formStatus, setFormStatus] = useState(false);
   const closeModalWindowBtn = () => setFormStatus(false);
   const showDeletedTag = () => setFormStatus(true);
-
+  
   const formPropsData = {
     isLoading,
     ...rest,
@@ -47,9 +47,10 @@ TodoListView.propTypes = {
   deleteTodoHandler: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   rest: PropTypes.shape({
-    handleFormSubmit: PropTypes.func.isRequired,
     error: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
+    handleFormSubmit: PropTypes.func.isRequired,
+    onChangeDescription: PropTypes.func.isRequired,
+    onChangeName: PropTypes.func.isRequired,
     todoList: todoListPropType.isRequired,
   }).isRequired,
 };

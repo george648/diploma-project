@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
 import { StyledAddButton } from './StyledAddButton';
 
-export const TodoForm = ({ onChange, handleFormSubmit, isLoading, error }) => (
+export const TodoForm = ({ onChangeName, onChangeDescription, handleFormSubmit, isLoading, error }) => (
     <>
       <form onSubmit={handleFormSubmit} className="todoForm">
         <input
-          onChange={onChange}
+          onChange={onChangeName}
           className="todoInput"
           name="name"
-          placeholder="enter nam0e of todo"
+          placeholder="enter name of todo"
           type="text"
         />
         <input
-          onChange={onChange}
+          onChange={onChangeDescription}
           className="todoInput"
           name="description"
           placeholder="enter description of todo"
@@ -27,7 +27,8 @@ export const TodoForm = ({ onChange, handleFormSubmit, isLoading, error }) => (
 );
 
 TodoForm.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  onChangeName: PropTypes.func.isRequired,
+  onChangeDescription: PropTypes.func.isRequired,
   handleFormSubmit: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,

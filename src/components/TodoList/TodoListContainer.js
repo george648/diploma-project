@@ -24,9 +24,6 @@ const TodoListContainer = ({
     description: '',
   });
 
-  // const [todoName, setTodoName] = useState('');
-  // const [todoDescription, setTodoDescription] = useState('');
-
   useEffect(() => {
     getTodos();
   }, []);
@@ -37,7 +34,21 @@ const TodoListContainer = ({
     setFormData(() => { });
   };
 
-  const onChange = ({ target: { name, value } }) => {
+  // const onChange = ({ target: { name, value } }) => {
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  // };
+
+  const onChangeName = ({ target: { name, value } }) => {
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+    const onChangeDescription = ({ target: { name, value } }) => {
     setFormData({
       ...formData,
       [name]: value,
@@ -49,7 +60,9 @@ const TodoListContainer = ({
     error,
     isLoading,
     handleFormSubmit,
-    onChange,
+    // onChange,
+    onChangeDescription,
+    onChangeName,
     completeTodoHandler,
     deleteTodoHandler,
   };
