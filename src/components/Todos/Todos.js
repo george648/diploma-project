@@ -7,7 +7,6 @@ export const Todos = ({
   todoList,
   deleteTodoHandler,
 }) => {
-
   const buttonDeleteHandler = useCallback((id) => {
     deleteTodoHandler(id);
   }, []);

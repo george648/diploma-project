@@ -12,12 +12,22 @@ const TodoListView = ({
   deletedName,
   isSuccessfullyDeleted,
   hideDeletedTodoHandler,
+  error,
+  handleFormSubmit,
+  onChangeDescription,
+  onChangeName,
   ...rest
 }) => {
-  
+
+  console.log(rest)
+ 
   const formPropsData = {
     isLoading,
     formData,
+    onChangeName,
+    onChangeDescription,
+    handleFormSubmit,
+    error,
     ...rest,
   };
 
@@ -52,11 +62,11 @@ TodoListView.propTypes = {
   }).isRequired,
   deletedName: PropTypes.string.isRequired,
   isSuccessfullyDeleted: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  handleFormSubmit: PropTypes.func.isRequired,
+  onChangeName: PropTypes.func.isRequired,
+  onChangeDescription: PropTypes.func.isRequired,
   rest: PropTypes.shape({
-    error: PropTypes.string.isRequired,
-    handleFormSubmit: PropTypes.func.isRequired,
-    onChangeDescription: PropTypes.func.isRequired,
-    onChangeName: PropTypes.func.isRequired,
     todoList: todoListPropType.isRequired,
   }).isRequired,
 };
