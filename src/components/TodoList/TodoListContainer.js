@@ -9,7 +9,7 @@ import {
   deleteTodo,
   completeTodo,
   hideDeletedTodo,
-} from '../../store';
+} from '../../store/thunkTodo/thunkTodo';
 
 const INITIAL_FORM_DATA = {
   name: '',
