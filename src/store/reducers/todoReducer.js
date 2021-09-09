@@ -83,3 +83,9 @@ export const todoReducer = (state = initialState, action) => {
             return state;
     }
 };
+
+// export const errorReducer = (state = initialState, action) => {
+    // switch (action.type) {
+            // 
+    // }
+// }

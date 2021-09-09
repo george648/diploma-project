@@ -31,8 +31,7 @@ const TodoListView = ({
     <div>
       <h2>Hey, what's your main focus for today? </h2>
       <TodoForm {...formPropsData} />
-      {isLoading && <span>Loading ...</span>}
-      {!isLoading && <Todos {...todoListData} />}
+      {isLoading ? <span>Loading ...</span> : <Todos {...todoListData} />}
       {isSuccessfullyDeleted && (
         <Modal closeModalWindowBtn={ hideDeletedTodoHandler}>
           {`You have just deleted ${deletedName}`}
