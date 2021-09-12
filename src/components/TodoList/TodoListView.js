@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import { Todos } from '../Todos/Todos';
 import { Modal } from '../UI/Modal/ModalWindow';
 import { TodoForm } from '../TodoForm/TodoForm';
-import { todoListPropType } from '../propTypes/propTypes';
 
 const TodoListView = ({
   completeTodoHandler,
@@ -18,8 +17,6 @@ const TodoListView = ({
   onChangeName,
   ...rest
 }) => {
-
-  console.log(rest)
  
   const formPropsData = {
     isLoading,
@@ -66,9 +63,6 @@ TodoListView.propTypes = {
   handleFormSubmit: PropTypes.func.isRequired,
   onChangeName: PropTypes.func.isRequired,
   onChangeDescription: PropTypes.func.isRequired,
-  rest: PropTypes.shape({
-    todoList: todoListPropType.isRequired,
-  }).isRequired,
 };
 
 export default TodoListView;
