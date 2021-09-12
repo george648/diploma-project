@@ -1,4 +1,4 @@
-import { SET_TODO_SUCCESS, SET_TODO_ERROR, DELETE_TODO_SUCCESS, DELETE_TODO_ERROR, LOADING, GET_TODO_LIST_SUCCESS, COMPLETE_TODO_SUCCESS, COMPLETE_TODO_ERROR, GET_TODO_LIST_ERROR, HIDE_DELETED_TODO } from '../types/types';
+import { SET_TODO_SUCCESS, SET_TODO_ERROR, DELETE_TODO_SUCCESS, DELETE_TODO_ERROR, LOADING, GET_TODO_LIST_SUCCESS, COMPLETE_TODO_SUCCESS, COMPLETE_TODO_ERROR, GET_TODO_LIST_ERROR } from '../types/types';
 
 export const setLoading = () => ({
     type: LOADING,
@@ -42,8 +42,4 @@ export const completeTodoError = (error) => ({
 export const completeTodoSuccess = (todoItem) => ({
     type: COMPLETE_TODO_SUCCESS,
     payload: todoItem,
-});
-
-export const hideDeletedTodo = () => ({
-    type: HIDE_DELETED_TODO,
 });

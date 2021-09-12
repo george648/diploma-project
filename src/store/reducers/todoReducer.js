@@ -84,8 +84,16 @@ export const todoReducer = (state = initialState, action) => {
     }
 };
 
-// export const errorReducer = (state = initialState, action) => {
-    // switch (action.type) {
-            // 
-    // }
-// }
+export const errorReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case SET_TODO_ERROR:
+            return {
+                ...state,
+                error: action.payload,
+                todoList: state.todoList,
+                isLoading: false,
+            };
+        default:
+            return state;
+    }
+}
