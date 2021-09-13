@@ -10,7 +10,7 @@
 
 # production
 /build
-
+/home/georgey/TMSS/diplom/diploma-project/.env
 # misc
 .DS_Store
 .env
