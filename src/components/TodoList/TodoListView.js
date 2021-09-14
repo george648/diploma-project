@@ -7,23 +7,15 @@ const TodoListView = ({
   completeTodoHandler,
   deleteTodoHandler,
   isLoading,
-  formData,
   deletedName,
   isSuccessfullyDeleted,
   hideDeletedTodoHandler,
   error,
-  handleFormSubmit,
-  onChangeDescription,
-  onChangeName,
   ...rest
 }) => {
  
   const formPropsData = {
     isLoading,
-    formData,
-    onChangeName,
-    onChangeDescription,
-    handleFormSubmit,
     error,
     ...rest,
   };
@@ -53,16 +45,9 @@ TodoListView.propTypes = {
   deleteTodoHandler: PropTypes.func.isRequired,
   hideDeletedTodoHandler: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  formData: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-  }).isRequired,
   deletedName: PropTypes.string.isRequired,
   isSuccessfullyDeleted: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-  handleFormSubmit: PropTypes.func.isRequired,
-  onChangeName: PropTypes.func.isRequired,
-  onChangeDescription: PropTypes.func.isRequired,
 };
 
 export default TodoListView;

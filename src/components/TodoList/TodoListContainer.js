@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TodoListView from './TodoListView';
 import { todoListPropType } from '../propTypes/propTypes';
 import {
-  postTodoList,
   getTodoList,
   deleteTodo,
   completeTodo,
   hideDeletedTodo,
 } from '../../store/thunkTodo/thunkTodo';
-
-const INITIAL_FORM_DATA = {
-  name: '',
-  description: '',
-};
 
 const TodoListContainer = ({
   completeTodoHandler,
@@ -22,48 +16,21 @@ const TodoListContainer = ({
   deleteTodoHandler,
   todoList,
   error,
-  postTodo,
   isLoading,
   deletedName,
   isSuccessfullyDeleted,
   hideDeletedTodoHandler,
 }) => {
-  const [formData, setFormData] = useState(INITIAL_FORM_DATA);
-
   useEffect(() => {
     getTodos();
   }, []);
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    postTodo(formData);
-    setFormData(() => (INITIAL_FORM_DATA));
-  };
-
-  const onChangeName = ({ target: { name, value } }) => {
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const onChangeDescription = ({ target: { name, value } }) => {
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
 
   const propsData = {
     todoList,
     error,
     isLoading,
-    handleFormSubmit,
-    onChangeDescription,
-    onChangeName,
     completeTodoHandler,
     deleteTodoHandler,
-    formData,
     deletedName,
     isSuccessfullyDeleted,
     hideDeletedTodoHandler,
@@ -82,7 +49,6 @@ const mapStateToProps = ({ isLoading, error, todoList, deletedTodo, isSuccessful
 
 const mapDispatchToProps = (dispatch) => ({
   hideDeletedTodoHandler: () => dispatch(hideDeletedTodo()),
-  postTodo: (form) => dispatch(postTodoList(form)),
   getTodos: () => dispatch(getTodoList()),
   deleteTodoHandler: (id) => dispatch(deleteTodo(id)),
   completeTodoHandler: (id, completed) => dispatch(completeTodo(id, completed)),
@@ -97,7 +63,6 @@ TodoListContainer.propTypes = {
   getTodos: PropTypes.func.isRequired,
   todoList: PropTypes.arrayOf(todoListPropType).isRequired,
   error: PropTypes.string.isRequired,
-  postTodo: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
 
