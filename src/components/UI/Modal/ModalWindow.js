@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
 import './ModalWindow.scss';
 import { withPortal } from '../../hocs/withPortal';
+import { ESCAPE, ENTER } from '../../../constans/constans'
 
 const ModalComponent = ({ children, closeModalWindowBtn }) => {
   const onKeyDownHandler = useCallback((event) => {
-    if (event.code === 'Enter' || event.code === 'Escape') {
+    if (event.code === ENTER || event.code === ESCAPE) {
       closeModalWindowBtn();
     }
   }, [closeModalWindowBtn]);

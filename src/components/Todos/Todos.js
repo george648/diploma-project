@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useCallback } from 'react';
 import { Todo } from './Todo/Todo';
+import { todoListPropType } from '../propTypes/propTypes'
 
 export const Todos = ({
   completeTodoHandler,
@@ -19,7 +20,14 @@ export const Todos = ({
     <ol>
       {todoList.length ? (
         todoList.map(({ name, description, _id, completed }) => (
-          <Todo key={_id} name={name} description={description} id={_id} completed={completed} buttonDeleteHandler={buttonDeleteHandler} checkHandler={checkHandler} />
+          <Todo 
+          key={_id} 
+          name={name} 
+          description={description} 
+          id={_id} 
+          completed={completed} 
+          buttonDeleteHandler={buttonDeleteHandler} 
+          checkHandler={checkHandler} />
         ))
       ) : (
         <div>there are no todos </div>
@@ -30,17 +38,6 @@ export const Todos = ({
 
 Todos.propTypes = {
   completeTodoHandler: PropTypes.func.isRequired,
-  todoList: PropTypes.arrayOf(
-    PropTypes.shape({
-      completed: PropTypes.bool.isRequired,
-      _id: PropTypes.string.isRequired,
-      createdAt: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-      owner: PropTypes.string.isRequired,
-      updatedAt: PropTypes.string.isRequired,
-      __v: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
+  todoList: PropTypes.arrayOf(todoListPropType).isRequired,
   deleteTodoHandler: PropTypes.func.isRequired,
 };

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { StyledAddButton } from './StyledAddButton';
 import { postTodoList } from '../../store/thunkTodo/thunkTodo';
 
-export const TodoForm = ({ isLoading, error, postTodo }) => {
+const TodoForm = ({ isLoading, error, postTodo }) => {
   const INITIAL_FORM_DATA = {
     name: '',
     description: '',

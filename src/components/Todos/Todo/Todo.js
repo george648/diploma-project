@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import { StyledTodos } from './StyledTodo';
+import { StyledTodo } from './StyledTodo';
 import { StyledDeleteButton } from './StyledDeleteButton';
 
 export const Todo = ({ id, name, description, completed, buttonDeleteHandler, checkHandler }) => (
   <li>
-    <StyledTodos>
+    <StyledTodo>
       <div>
         <span>
           Name:<strong>{name}.</strong>
@@ -24,9 +24,9 @@ export const Todo = ({ id, name, description, completed, buttonDeleteHandler, ch
           onClick={() => buttonDeleteHandler(id)}
         >
           delete task
-            </StyledDeleteButton>
+        </StyledDeleteButton>
       </div>
-    </StyledTodos>
+    </StyledTodo>
   </li>
 );
 

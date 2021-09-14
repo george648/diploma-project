@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Todos } from '../Todos/Todos';
 import { Modal } from '../UI/Modal/ModalWindow';
-import { TodoForm } from '../TodoForm/TodoForm';
+import TodoForm  from '../TodoForm/TodoForm';
 
 const TodoListView = ({
   completeTodoHandler,
@@ -13,10 +13,8 @@ const TodoListView = ({
   error,
   ...rest
 }) => {
- 
+
   const formPropsData = {
-    isLoading,
-    error,
     ...rest,
   };
 
@@ -32,7 +30,7 @@ const TodoListView = ({
       <TodoForm {...formPropsData} />
       {isLoading ? <span>Loading ...</span> : <Todos {...todoListData} />}
       {isSuccessfullyDeleted && (
-        <Modal closeModalWindowBtn={ hideDeletedTodoHandler}>
+        <Modal closeModalWindowBtn={hideDeletedTodoHandler}>
           {`You have just deleted ${deletedName}`}
         </Modal>
       )}
