@@ -1,3 +1,3 @@
-export const ESCAPE = 'ESCAPE';
+export const ESCAPE = 'Escape';
 
-export const ENTER = 'ENTER';
+export const ENTER = 'Enter';
