@@ -1,12 +1,17 @@
-import { setLoading, postTodoSuccess, deleteTodoSuccess, deleteTodoError, postTodoError, getTodoListSuccess, getTodoListError, completeTodoError, completeTodoSuccess } from '../actions/actions';
+import { fetchUtil } from '../../utils/fetchUtil';
+import {
+    setLoading,
+    postTodoSuccess,
+    deleteTodoSuccess,
+    deleteTodoError,
+    postTodoError,
+    getTodoListSuccess,
+    getTodoListError,
+    completeTodoError,
+    completeTodoSuccess,
+} from '../actions/actions';
 
-export const getTodoList = () => (dispatch) =>
-    fetch(`${process.env.REACT_APP_API_URL}/tasks`, {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-        },
-    })
+export const getTodoList = () => (dispatch) => fetchUtil(`${process.env.REACT_APP_API_URL}/tasks`, 'GET', null, process.env.REACT_APP_TOKEN)
         .then(dispatch(setLoading()))
         .then((response) => response.json())
         .then((data) => {
@@ -16,15 +21,7 @@ export const getTodoList = () => (dispatch) =>
             getTodoListError(error);
         });
 
-export const postTodoList = (body) => (dispatch) =>
-    fetch(`${process.env.REACT_APP_API_URL}/tasks`, {
-        method: 'POST',
-        headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-            'Content-type': 'application/json; charset=utf-8',
-        },
-        body: JSON.stringify(body),
-    })
+export const postTodoList = (body) => (dispatch) => fetchUtil(`${process.env.REACT_APP_API_URL}/tasks`, 'POST', JSON.stringify(body), process.env.REACT_APP_TOKEN)
         .then(dispatch(setLoading()))
         .then((data) => data.json())
         .then((response) => {
@@ -36,26 +33,12 @@ export const postTodoList = (body) => (dispatch) =>
         })
         .catch((error) => dispatch(postTodoError(error)));
 
-export const deleteTodo = (id) => (dispatch) =>
-    fetch(`${process.env.REACT_APP_API_URL}/tasks/${id}`, {
-        method: 'DELETE',
-        headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-        },
-    })
+export const deleteTodo = (id) => (dispatch) => fetchUtil(`${process.env.REACT_APP_API_URL}/tasks/${id}`, 'DELETE', null, process.env.REACT_APP_TOKEN)
         .then((response) => response.json())
         .then((data) => dispatch(deleteTodoSuccess(data)))
         .catch((error) => dispatch(deleteTodoError(error)));
 
-export const completeTodo = (id, completed) => (dispatch) =>
-    fetch(`${process.env.REACT_APP_API_URL}/tasks/${id}`, {
-        method: 'PATCH',
-        headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
-            'Content-Type': 'application/json;charset=utf-8',
-        },
-        body: JSON.stringify({ completed }),
-    })
+export const completeTodo = (id, completed) => (dispatch) => fetchUtil(`${process.env.REACT_APP_API_URL}/tasks/${id}`, 'PATCH', JSON.stringify({completed}), process.env.REACT_APP_TOKEN)
         .then((response) => response.json())
         .then((data) => dispatch(completeTodoSuccess(data)))
         .catch((error) => dispatch(completeTodoError(error)));

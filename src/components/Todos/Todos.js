@@ -7,23 +7,23 @@ export const Todos = ({
   todoList,
   deleteTodoHandler,
 }) => (
-  <ol>
-    {todoList.length ? (
-      todoList.map(({ name, description, _id, completed }) => (
-        <Todo
-          key={_id}
-          name={name}
-          description={description}
-          id={_id}
-          completed={completed}
-          deleteTodoHandler={deleteTodoHandler}
+    <ol>
+      {todoList.length ? (
+        todoList.map(({ name, description, _id, completed }) => (
+          <Todo 
+          key={_id} 
+          name={name} 
+          description={description} 
+          id={_id} 
+          completed={completed} 
+          deleteTodoHandler={deleteTodoHandler} 
           completeTodoHandler={completeTodoHandler} />
-      ))
-    ) : (
-      <div>there are no todos </div>
-    )}
-  </ol>
-);
+        ))
+      ) : (
+        <div>there are no todos</div>
+      )}
+    </ol>
+  );
 
 
 Todos.propTypes = {
