@@ -10,7 +10,7 @@ import {
   hideDeletedTodo,
 } from '../../store/thunkTodo/thunkTodo';
 
-const TodoListContainer = ({
+const TodoListContainer = ( props, {
   completeTodoHandler,
   getTodos,
   deleteTodoHandler,
