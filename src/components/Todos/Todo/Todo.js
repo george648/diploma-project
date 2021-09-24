@@ -3,14 +3,14 @@ import { useCallback } from 'react';
 import { StyledTodo } from './StyledTodo';
 import { StyledDeleteButton } from './StyledDeleteButton';
 
-export const Todo = ({ 
-  id, 
-  name, 
-  description, 
-  completed, 
+export const Todo = ({
+  id,
+  name,
+  description,
+  completed,
   deleteTodoHandler,
   completeTodoHandler,
-  }) => {  
+}) => {
   const buttonDeleteHandler = useCallback(() => {
     deleteTodoHandler(id);
   }, [id]);

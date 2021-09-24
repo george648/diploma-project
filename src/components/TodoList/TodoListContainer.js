@@ -10,7 +10,7 @@ import {
   hideDeletedTodo,
 } from '../../store/thunkTodo/thunkTodo';
 
-const TodoListContainer = ( props, {
+const TodoListContainer = ({
   completeTodoHandler,
   getTodos,
   deleteTodoHandler,
@@ -39,7 +39,9 @@ const TodoListContainer = ( props, {
   return <TodoListView {...propsData} />;
 };
 
-const mapStateToProps = ({ isLoading, error, todoList, deletedTodo, isSuccessfullyDeleted }) => ({
+const mapStateToProps = ({ loadingStore: { isLoading }, 
+  errorStore: { error }, 
+  toDoListStore: { isSuccessfullyDeleted, todoList, deletedTodo } }) => ({
   isSuccessfullyDeleted,
   deletedName: deletedTodo.name,
   todoList,

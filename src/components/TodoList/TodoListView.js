@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Todos } from '../Todos/Todos';
 import { Modal } from '../UI/Modal/ModalWindow';
 import TodoForm  from '../TodoForm/TodoForm';
+import { todoListPropType } from '../propTypes/propTypes';
 
 const TodoListView = ({
   completeTodoHandler,
@@ -11,14 +12,11 @@ const TodoListView = ({
   isSuccessfullyDeleted,
   hideDeletedTodoHandler,
   error,
+  todoList,
   ...rest
-}) => {
-
-  const formPropsData = {
-    ...rest,
-  };
-
+}) => {  
   const todoListData = {
+    todoList,
     ...rest,
     deleteTodoHandler,
     completeTodoHandler,
@@ -27,8 +25,8 @@ const TodoListView = ({
   return (
     <div>
       <h2>Hey, what's your main focus for today? </h2>
-      <TodoForm {...formPropsData} />
-      {isLoading ? <span>Loading ...</span> : <Todos {...todoListData} />}
+      <TodoForm />
+      {isLoading ? <span>Loading ...</span> :<Todos {...todoListData} />}
       {isSuccessfullyDeleted && (
         <Modal closeModalWindowBtn={hideDeletedTodoHandler}>
           {`You have just deleted ${deletedName}`}
@@ -46,6 +44,7 @@ TodoListView.propTypes = {
   deletedName: PropTypes.string.isRequired,
   isSuccessfullyDeleted: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
+  todoList: PropTypes.arrayOf(todoListPropType).isRequired,
 };
 
 export default TodoListView;

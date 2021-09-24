@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { StyledAddButton } from './StyledAddButton';
 import { postTodoList } from '../../store/thunkTodo/thunkTodo';
 
-const TodoForm = ({ isLoading, error, postTodo }) => {
+const TodoForm = ({error, isLoading, postTodo}) => {
   const INITIAL_FORM_DATA = {
     name: '',
     description: '',
@@ -34,7 +34,7 @@ const TodoForm = ({ isLoading, error, postTodo }) => {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit} className="todoForm">
+       <form onSubmit={handleFormSubmit} className="todoForm">
         <input
           onChange={onChangeName}
           className="todoInput"
@@ -55,7 +55,7 @@ const TodoForm = ({ isLoading, error, postTodo }) => {
           {isLoading ? 'Loading...' : 'Add Todo'}
         </StyledAddButton>
       </form>
-      <span style={{ color: 'red' }}>{error}</span>
+      <span style={{ color: 'red' }}>{error}</span> 
     </>
   )
 };
@@ -66,9 +66,9 @@ TodoForm.propTypes = {
   postTodo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({isLoading, error}) => ({
+const mapStateToProps = ({ loadingStore: { isLoading }, errorStore: { error }}) => ({
   isLoading,
-  error,
+  error,  
 });
 
 const mapDispatchToProps = (dispatch) => ({
