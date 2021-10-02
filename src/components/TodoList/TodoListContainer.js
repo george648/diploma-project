@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TodoListView from './TodoListView';
-import { todoListPropType } from '../propTypes/propTypes';
+// import { todoListPropType } from '../propTypes/propTypes';
 import {
   getTodoList,
   deleteTodo,
@@ -14,9 +14,9 @@ const TodoListContainer = ({
   completeTodoHandler,
   getTodos,
   deleteTodoHandler,
-  todoList,
+  // todoList,
   error,
-  isLoading,
+  // isLoading,
   deletedName,
   isSuccessfullyDeleted,
   hideDeletedTodoHandler,
@@ -26,9 +26,7 @@ const TodoListContainer = ({
   }, []);
 
   const propsData = {
-    todoList,
     error,
-    isLoading,
     completeTodoHandler,
     deleteTodoHandler,
     deletedName,
@@ -39,13 +37,11 @@ const TodoListContainer = ({
   return <TodoListView {...propsData} />;
 };
 
-const mapStateToProps = ({ loadingStore: { isLoading }, 
+const mapStateToProps = ({  
   errorStore: { error }, 
-  toDoListStore: { isSuccessfullyDeleted, todoList, deletedTodo } }) => ({
+  toDoListStore: { isSuccessfullyDeleted, deletedTodo } }) => ({
   isSuccessfullyDeleted,
   deletedName: deletedTodo.name,
-  todoList,
-  isLoading,
   error,
 });
 
@@ -63,9 +59,7 @@ TodoListContainer.propTypes = {
   completeTodoHandler: PropTypes.func.isRequired,
   deleteTodoHandler: PropTypes.func.isRequired,
   getTodos: PropTypes.func.isRequired,
-  todoList: PropTypes.arrayOf(todoListPropType).isRequired,
   error: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoListContainer);

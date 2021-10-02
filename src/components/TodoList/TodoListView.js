@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Todos } from '../Todos/Todos';
 import { Modal } from '../UI/Modal/ModalWindow';
-import TodoForm  from '../TodoForm/TodoForm';
+import TodoForm from '../TodoForm/TodoForm';
 import { todoListPropType } from '../propTypes/propTypes';
 
 const TodoListView = ({
@@ -14,7 +15,7 @@ const TodoListView = ({
   error,
   todoList,
   ...rest
-}) => {  
+}) => {
   const todoListData = {
     todoList,
     ...rest,
@@ -26,7 +27,7 @@ const TodoListView = ({
     <div>
       <h2>Hey, what's your main focus for today? </h2>
       <TodoForm />
-      {isLoading ? <span>Loading ...</span> :<Todos {...todoListData} />}
+      {isLoading ? <span>Loading ...</span> : <Todos {...todoListData} />}
       {isSuccessfullyDeleted && (
         <Modal closeModalWindowBtn={hideDeletedTodoHandler}>
           {`You have just deleted ${deletedName}`}
@@ -35,6 +36,14 @@ const TodoListView = ({
     </div>
   );
 };
+
+const mapStateToProps = ({
+  loadingStore: { isLoading },
+  toDoListStore: { todoList },
+}) => ({
+  isLoading,
+  todoList,
+});
 
 TodoListView.propTypes = {
   completeTodoHandler: PropTypes.func.isRequired,
@@ -47,4 +56,4 @@ TodoListView.propTypes = {
   todoList: PropTypes.arrayOf(todoListPropType).isRequired,
 };
 
-export default TodoListView;
+export default connect(mapStateToProps, null)(TodoListView);
