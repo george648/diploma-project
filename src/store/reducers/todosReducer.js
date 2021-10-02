@@ -12,13 +12,11 @@ import {
 
 const initialState = {
     user: {},
-    // isLoading: false,
     todoList: [],
     deletedTodo: {
         name: '',
     },
     isSuccessfullyDeleted: false,
-    // error: '',
 };
 
 export const todosReducer = (state = initialState, action) => {

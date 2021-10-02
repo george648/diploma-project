@@ -1,8 +1,19 @@
-import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { todoListPropType } from '../propTypes/propTypes';
 
-export const UncompletedTodos = () => {
-  const todos = useSelector((state) => state.todoList);
-  const uncompletedTodos = todos.filter(({ completed }) => !completed);
+const UncompletedTodos = ({todoList}) => {
+  const uncompletedTodos = todoList.filter(({ completed }) => !completed);
 
-  return <div>UncompletedTodos: {uncompletedTodos.length}</div>;
+  return <div>Completed todos right now are: {uncompletedTodos.length}</div>;
 };
+
+const mapStateToProps = ({toDoListStore: { todoList }}) => ({
+  todoList,
+});
+
+UncompletedTodos.propTypes = {
+  todoList: PropTypes.arrayOf(todoListPropType).isRequired,
+};
+
+export default connect(mapStateToProps, null)(UncompletedTodos);

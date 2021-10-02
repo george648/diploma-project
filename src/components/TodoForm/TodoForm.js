@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useState } from 'react';
-import { StyledAddButton } from './StyledAddButton';
+import './TodoForm.scss';
 import { postTodoList } from '../../store/thunkTodo/thunkTodo';
 
-const TodoForm = ({error, isLoading, postTodo}) => {
-  const INITIAL_FORM_DATA = {
-    name: '',
-    description: '',
-  };
+const INITIAL_FORM_DATA = {
+  name: '',
+  description: '',
+};
 
+const TodoForm = ({error, isLoading, postTodo}) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleFormSubmit = (event) => {
@@ -51,9 +51,9 @@ const TodoForm = ({error, isLoading, postTodo}) => {
           placeholder="enter description of todo"
           type="text"
         />
-        <StyledAddButton disabled={isLoading} className="addTodoButton">
+        <button disabled={isLoading} className="addTodoButton">
           {isLoading ? 'Loading...' : 'Add Todo'}
-        </StyledAddButton>
+        </button>
       </form>
       <span style={{ color: 'red' }}>{error}</span> 
     </>

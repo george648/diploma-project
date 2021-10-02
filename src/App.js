@@ -2,11 +2,11 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.scss';
 import TodoList from './components/TodoList';
 import { Header } from './components/Header/Header';
-import { CompletedTodos } from './components/CompletedTodos/CompletedTodos';
-import { UncompletedTodos } from './components/UncompletedTodos/UncompletedTodos';
+import  CompletedTodos from './components/CompletedTodos/CompletedTodos';
+import UncompletedTodos from './components/UncompletedTodos/UncompletedTodos';
 import { PageNotFound } from './components/PageNotFound/PageNotFound';
 
-const App = (props) => (
+const App = () => (
   <>
     <Header />
     <Switch>
@@ -14,7 +14,7 @@ const App = (props) => (
         <Redirect to="/all-todos" />
       </Route>
       <Route path="/all-todos">
-        <TodoList {...props} />
+        <TodoList />
       </Route>
       <Route path="/completed-todos">
         <CompletedTodos />
