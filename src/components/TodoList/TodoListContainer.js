@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import TodoListView from './TodoListView';
-// import { todoListPropType } from '../propTypes/propTypes';
 import {
   getTodoList,
   deleteTodo,
@@ -14,9 +13,7 @@ const TodoListContainer = ({
   completeTodoHandler,
   getTodos,
   deleteTodoHandler,
-  // todoList,
   error,
-  // isLoading,
   deletedName,
   isSuccessfullyDeleted,
   hideDeletedTodoHandler,

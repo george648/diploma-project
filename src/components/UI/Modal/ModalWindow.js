@@ -2,14 +2,14 @@ import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
 import './ModalWindow.scss';
 import { withPortal } from '../../hocs/withPortal';
-import { ESCAPE, ENTER } from '../../../constans/constans'
+import { ESCAPE, ENTER } from '../../../constants/constants';
 
-const ModalComponent = ({ children, closeModalWindowBtn }) => {
+const ModalComponent = ({ children, onCloseButtonClick }) => {
   const onKeyDownHandler = useCallback((event) => {
     if (event.code === ENTER || event.code === ESCAPE) {
-      closeModalWindowBtn();
+      onCloseButtonClick();
     }
-  }, [closeModalWindowBtn]);
+  }, [onCloseButtonClick]);
 
   useEffect(() => {
     window.addEventListener('keydown', onKeyDownHandler);
@@ -25,7 +25,7 @@ const ModalComponent = ({ children, closeModalWindowBtn }) => {
           <div className="topModalBtnBlock">
             <button
               type="button"
-              onClick={closeModalWindowBtn}
+              onClick={onCloseButtonClick}
               className="closeModalBtn"
             >
               X
@@ -33,7 +33,7 @@ const ModalComponent = ({ children, closeModalWindowBtn }) => {
           </div>
           <div className="changingModalContent">{children}</div>
           <div className="bottomModalBtnBlock">
-            <button type="button" onClick={closeModalWindowBtn}>
+            <button type="button" onClick={onCloseButtonClick}>
               Ok
             </button>
           </div>
@@ -47,5 +47,5 @@ export const Modal = withPortal(ModalComponent);
 
 ModalComponent.propTypes = {
   children: PropTypes.string.isRequired,
-  closeModalWindowBtn: PropTypes.func.isRequired,
+  onCloseButtonClick: PropTypes.func.isRequired,
 };

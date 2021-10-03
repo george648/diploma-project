@@ -1,6 +1,6 @@
 import {
     SET_TODO_SUCCESS,
-    SET_TODO_ERROR,
+    // SET_TODO_ERROR,
     DELETE_TODO_SUCCESS,
     DELETE_TODO_ERROR,
     LOADING,
@@ -26,11 +26,11 @@ export const todosReducer = (state = initialState, action) => {
                 ...state,
                 todoList: [...state.todoList, action.payload],
             };
-        case SET_TODO_ERROR:
-            return {
-                ...state,
-                todoList: state.todoList,
-            };
+        // case SET_TODO_ERROR:
+            // return {
+                // ...state,
+                // todoList: state.todoList,
+            // };
         case DELETE_TODO_SUCCESS:
             return {
                 ...state,

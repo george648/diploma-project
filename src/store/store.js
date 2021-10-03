@@ -1,6 +1,5 @@
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-// import { todoReducer } from './reducers/todoReducer';
 import { todosReducer as toDoListStore } from './reducers/todosReducer';
 import { errorReducer as errorStore } from './reducers/errorReducer';
 import { loadingReducer as loadingStore } from './reducers/loadingReducer';

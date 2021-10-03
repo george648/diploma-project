@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 import { useState } from 'react';
 import './TodoForm.scss';
 import { postTodoList } from '../../store/thunkTodo/thunkTodo';
+import { Input } from '../UI/Input/Input';
 
 const INITIAL_FORM_DATA = {
   name: '',
   description: '',
 };
 
-const TodoForm = ({error, isLoading, postTodo}) => {
+const TodoForm = ({ error, isLoading, postTodo }) => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
 
   const handleFormSubmit = (event) => {
@@ -23,6 +24,7 @@ const TodoForm = ({error, isLoading, postTodo}) => {
       ...formData,
       [name]: value,
     });
+    console.log(value)
   };
 
   const onChangeDescription = ({ target: { name, value } }) => {
@@ -30,32 +32,31 @@ const TodoForm = ({error, isLoading, postTodo}) => {
       ...formData,
       [name]: value,
     });
+    console.log(value)
   };
+
+  console.log(formData)
 
   return (
     <>
-       <form onSubmit={handleFormSubmit} className="todoForm">
-        <input
+      <form onSubmit={handleFormSubmit} className="todoForm">
+        <Input
           onChange={onChangeName}
-          className="todoInput"
           value={formData.name}
           name="name"
           placeholder="enter name of todo"
-          type="text"
         />
-        <input
+        <Input
           onChange={onChangeDescription}
-          className="todoInput"
           value={formData.description}
           name="description"
           placeholder="enter description of todo"
-          type="text"
         />
         <button disabled={isLoading} className="addTodoButton">
           {isLoading ? 'Loading...' : 'Add Todo'}
         </button>
       </form>
-      <span style={{ color: 'red' }}>{error}</span> 
+      <span style={{ color: 'red' }}>{error}</span>
     </>
   )
 };
@@ -66,9 +67,9 @@ TodoForm.propTypes = {
   postTodo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ loadingStore: { isLoading }, errorStore: { error }}) => ({
+const mapStateToProps = ({ loadingStore: { isLoading }, errorStore: { error } }) => ({
   isLoading,
-  error,  
+  error,
 });
 
 const mapDispatchToProps = (dispatch) => ({
