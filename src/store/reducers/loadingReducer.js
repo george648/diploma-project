@@ -8,59 +8,30 @@ import {
     COMPLETE_TODO_SUCCESS,
     COMPLETE_TODO_ERROR,
     GET_TODO_LIST_ERROR,
-} from '../types/types';
+} from '../actionTypes';
 
-const initialState = {
-    isLoading: false,
-};
+const initialState = false;
 
 export const loadingReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_TODO_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-            };
+            return false;
         case SET_TODO_ERROR:
-            return {
-                ...state,
-                isLoading: false,
-            };
+            return false;
         case DELETE_TODO_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-            };
+            return false;
         case DELETE_TODO_ERROR:
-            return {
-                ...state,
-                isLoading: false,
-            };
+            return false;
         case LOADING:
-            return {
-                ...state,
-                isLoading: true,
-            };
+            return true;
         case GET_TODO_LIST_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-            };
+            return false;
         case COMPLETE_TODO_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-            };
+            return false;
         case COMPLETE_TODO_ERROR:
-            return {
-                ...state,
-                isLoading: false,
-            };
+            return false;
         case GET_TODO_LIST_ERROR:
-            return {
-                ...state,
-                isLoading: false,
-            }
+        return false;
         default:
             return state;
     }

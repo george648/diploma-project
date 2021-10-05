@@ -35,7 +35,7 @@ const TodoListContainer = ({
 };
 
 const mapStateToProps = ({  
-  errorStore: { error }, 
+  errorStore: error, 
   toDoListStore: { isSuccessfullyDeleted, deletedTodo } }) => ({
   isSuccessfullyDeleted,
   deletedName: deletedTodo.name,

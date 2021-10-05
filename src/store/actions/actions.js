@@ -7,7 +7,7 @@ import { SET_TODO_SUCCESS,
     COMPLETE_TODO_SUCCESS, 
     COMPLETE_TODO_ERROR, 
     GET_TODO_LIST_ERROR,
-    } from '../types/types';
+    } from '../actionTypes';
 
 export const setLoading = () => ({
     type: LOADING,

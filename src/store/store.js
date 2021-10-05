@@ -2,10 +2,10 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { todosReducer as toDoListStore } from './reducers/todosReducer';
 import { errorReducer as errorStore } from './reducers/errorReducer';
-import { loadingReducer as loadingStore } from './reducers/loadingReducer';
+import { loadingReducer as isLoading } from './reducers/loadingReducer';
 
 const rootReducer = combineReducers({
-    loadingStore,
+    isLoading,
     errorStore,
     toDoListStore,
 });

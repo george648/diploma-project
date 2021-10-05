@@ -63,7 +63,7 @@ TodoForm.propTypes = {
   postTodo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ loadingStore: { isLoading }, errorStore: { error } }) => ({
+const mapStateToProps = ({ isLoading , errorStore:  error }) => ({
   isLoading,
   error,
 });

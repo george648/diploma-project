@@ -1,6 +1,5 @@
 import {
     SET_TODO_SUCCESS,
-    // SET_TODO_ERROR,
     DELETE_TODO_SUCCESS,
     DELETE_TODO_ERROR,
     LOADING,
@@ -8,7 +7,7 @@ import {
     COMPLETE_TODO_SUCCESS,
     GET_TODO_LIST_ERROR,
     HIDE_DELETED_TODO,
-} from '../types/types';
+} from '../actionTypes';
 
 const initialState = {
     user: {},
