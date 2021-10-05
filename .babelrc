@@ -7,8 +7,7 @@
                     "./src"
                 ],
                 "alias": {
-                    "test": "./test",
-                    "underscore": "lodash"
+                    "test": "./test"
                 }
             }
         ]
