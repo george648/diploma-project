@@ -1,4 +1,6 @@
-export const fetchUtil = (apiUrl, method, body = {}, token = localStorage.get('auth-token')) => {
+import { token } from '../constants';
+
+export const fetchUtil = (apiParams, method, body = {}) => {
     const options = {
         method,
         headers: {},
@@ -13,5 +15,5 @@ export const fetchUtil = (apiUrl, method, body = {}, token = localStorage.get('a
         options.body = body
     }
 
-    return fetch(apiUrl, options)
+    return fetch(`${process.env.REACT_APP_API_URL}${apiParams}`, options)
 };

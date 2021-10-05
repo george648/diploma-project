@@ -26,11 +26,6 @@ export const todosReducer = (state = initialState, action) => {
                 ...state,
                 todoList: [...state.todoList, action.payload],
             };
-        // case SET_TODO_ERROR:
-            // return {
-                // ...state,
-                // todoList: state.todoList,
-            // };
         case DELETE_TODO_SUCCESS:
             return {
                 ...state,

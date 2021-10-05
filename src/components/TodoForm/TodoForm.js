@@ -24,7 +24,6 @@ const TodoForm = ({ error, isLoading, postTodo }) => {
       ...formData,
       [name]: value,
     });
-    console.log(value)
   };
 
   const onChangeDescription = ({ target: { name, value } }) => {
@@ -32,10 +31,7 @@ const TodoForm = ({ error, isLoading, postTodo }) => {
       ...formData,
       [name]: value,
     });
-    console.log(value)
   };
-
-  console.log(formData)
 
   return (
     <>

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useCallback, useEffect } from 'react';
 import './ModalWindow.scss';
 import { withPortal } from '../../hocs/withPortal';
-import { ESCAPE, ENTER } from '../../../constants/constants';
+import { ESCAPE, ENTER } from '../../../constants';
 
 const ModalComponent = ({ children, onCloseButtonClick }) => {
   const onKeyDownHandler = useCallback((event) => {
