@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useState } from 'react';
 import './TodoForm.scss';
-import { postTodoList } from '../../store/thunkTodo/thunkTodo';
+import { postTodoList } from 'store/thunkTodo/thunkTodo';
 import { Input } from '../UI/Input/Input';
 
 const INITIAL_FORM_DATA = {
@@ -16,7 +16,7 @@ const TodoForm = ({ error, isLoading, postTodo }) => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     postTodo(formData);
-    setFormData(() => (INITIAL_FORM_DATA));
+    setFormData(() => INITIAL_FORM_DATA);
   };
 
   const onChangeName = ({ target: { name, value } }) => {
@@ -54,7 +54,7 @@ const TodoForm = ({ error, isLoading, postTodo }) => {
       </form>
       <span style={{ color: 'red' }}>{error}</span>
     </>
-  )
+  );
 };
 
 TodoForm.propTypes = {
@@ -63,7 +63,7 @@ TodoForm.propTypes = {
   postTodo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({ isLoading , errorStore:  error }) => ({
+const mapStateToProps = ({ isLoading, errorStore: error }) => ({
   isLoading,
   error,
 });

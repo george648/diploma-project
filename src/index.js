@@ -5,7 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import store from './store';
 import store from './store/store';
 
 ReactDOM.render(

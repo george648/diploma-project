@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import TodoListView from './TodoListView';
 import {
   getTodoList,
   deleteTodo,
   completeTodo,
   hideDeletedTodo,
-} from '../../store/thunkTodo/thunkTodo';
+} from 'store/thunkTodo/thunkTodo';
+import TodoListView from './TodoListView';
+
 
 const TodoListContainer = ({
   completeTodoHandler,
@@ -34,9 +35,10 @@ const TodoListContainer = ({
   return <TodoListView {...propsData} />;
 };
 
-const mapStateToProps = ({  
-  errorStore: error, 
-  toDoListStore: { isSuccessfullyDeleted, deletedTodo } }) => ({
+const mapStateToProps = ({
+  errorStore: error,
+  toDoListStore: { isSuccessfullyDeleted, deletedTodo },
+}) => ({
   isSuccessfullyDeleted,
   deletedName: deletedTodo.name,
   error,

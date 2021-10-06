@@ -37,10 +37,7 @@ const TodoListView = ({
   );
 };
 
-const mapStateToProps = ({
-  isLoading,
-  toDoListStore: { todoList },
-}) => ({
+const mapStateToProps = ({ isLoading, toDoListStore: { todoList } }) => ({
   isLoading,
   todoList,
 });

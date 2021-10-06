@@ -15,9 +15,12 @@ export const Todo = ({
     deleteTodoHandler(id);
   }, [id]);
 
-  const checkHandler = useCallback((event) => {
-    completeTodoHandler(id, event.target.checked);
-  }, [id, completed]);
+  const checkHandler = useCallback(
+    (event) => {
+      completeTodoHandler(id, event.target.checked);
+    },
+    [id, completed],
+  );
 
   return (
     <li>
@@ -32,20 +35,14 @@ export const Todo = ({
           </span>
         </div>
         <div>
-          <input
-            checked={completed}
-            type="checkbox"
-            onChange={checkHandler}
-          />
-          <StyledDeleteButton
-            onClick={buttonDeleteHandler}
-          >
+          <input checked={completed} type="checkbox" onChange={checkHandler} />
+          <StyledDeleteButton onClick={buttonDeleteHandler}>
             delete task
           </StyledDeleteButton>
         </div>
       </StyledTodo>
     </li>
-  )
+  );
 };
 
 Todo.propTypes = {

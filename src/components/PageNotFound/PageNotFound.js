@@ -1,4 +1,4 @@
-import notFound from '../../images/notFound.jpg';
+import notFound from 'images/notFound.jpg';
 import './StyledPageNotFound.scss';
 
 export const PageNotFound = () => (
